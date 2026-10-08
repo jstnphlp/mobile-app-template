@@ -1,0 +1,25 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+build/
+coverage/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/ephemeral/
+*.iml
+.idea/
+.vscode/
+# Secrets/signing and local overrides
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+key.properties
+**/GoogleService-Info.plist
+**/google-services.json
+# Generated desktop/mobile scaffolding is intentionally created during bootstrap;
+# once generated, review and commit platform directories.
+.DS_Store

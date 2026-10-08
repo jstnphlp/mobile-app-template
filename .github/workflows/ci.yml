@@ -1,0 +1,27 @@
+name: Flutter CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate temporary native project scaffolding
+        run: flutter create --platforms=android,ios --project-name mobile_app_template .
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Dart format
+        run: dart format --output=none --set-exit-if-changed lib test
+      - name: Flutter analyze
+        run: flutter analyze
+      - name: Flutter test
+        run: flutter test
